@@ -3,32 +3,49 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>5000兆円ジェネレーター for `欲しい!`</title>
+	<title>5000兆円ジェネレーター super</title>
 	<meta name="description" content="今、話題の5000兆円。そんな5000兆円のような画像を生成できる5000兆円ジェネレーターです。好きな文字を入れて素敵な5000兆円ライフを楽しもう！" />
 	<style type="text/css">
 		@font-face {
 			font-family: 'ipaexm';
-			src: url('docs/ipaexm.ttf') format('truetype');
+			src: url('ipaexm.ttf') format('truetype');
 		}
-
+		@font-face {
+			font-family: 'mplus';
+			src: url('mplus-1p-black.ttf') format('truetype');
+		}
 		div {
 			display: block;
 		}
 	</style>
-	<script src="docs/main.js"></script>
+	<script src="main.js"></script>
 </head>
 
 <body>
-	<h1>5000兆円ジェネレーター  for `欲しい!`</h1>
+	<h1>5000兆円ジェネレーター super</h1>
 	<div>
-		<canvas id="canvas" width="1500px" height="150px"></canvas>
+		<canvas id="canvas" width="1500px" height="300px"></canvas>
 	</div>
 	<div>
-		<input type="text" id="textbox" size="50" value="" spellcheck="false" oninput="redraw();">
+		赤色の文字<input type="text" id="textboxTop" size="50" value="" spellcheck="false" oninput="redrawTop();"><br>
+		銀色の文字<input type="text" id="textboxBottom" size="50" value="" spellcheck="false" oninput="redrawBottom();">
 		<button type="button" onclick="saveImage();">画像を保存する</button>
 	</div>
 	<div>
-		5000兆円風の画像を生成するツールです。 文字によっては潰れてしまうことがあります。
+		<p>5000兆円風の画像を生成するツールです。 文字によっては潰れてしまうことがあります。</p>
+		<p><font color="blue">`欲しい!` のような銀色の文字も生成できます。</font></p>
+	</div>
+	<div>
+		---
+	</div>
+	<div>
+		原作者:<a href="https://twitter.com/rarity_rare25">@rarity_rare25</a> 
+		ソース:<a href="https://github.com/Rare25/5000choyen">5000choyen</a>
+		URL: <a href="https://rare25.github.io/5000choyen/">5000兆円ジェネレーター</a>
+	</div>
+	<div>
+		フォーク:<a href="https://twitter.com/yurafuca">@yurafuca</a> 
+		ソース:<a href="https://github.com/yurafuca/5000choyen">yurafuca/5000choyen</a>
 	</div>
 </body>
 
