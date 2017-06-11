@@ -102,7 +102,7 @@ function redrawBottom() {
   var offsetX = 250;
   var offsetY = 130;
 
-  ctx.font = '100px ipaexm';
+  ctx.font = '100px yumindb';
 
   ctx.clearRect(0+offsetX, 0+offsetY, canvas.width, canvas.height/2);
   var posx = 70 + offsetX;
