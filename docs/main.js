@@ -37,33 +37,49 @@ function redrawTop() {
   var posy = 100;
   var text = textboxes.top.value;
 
-  //銀色
-  for (var i = 0; i < 10; i++) {
+    //黒色
     {
-      var grad = ctx.createLinearGradient(0, 20, 0, 100);
-      grad.addColorStop(0, 'rgb(' + 10 * i + ', ' + 10 * i + ', ' + 10 * i + ')');
-      ctx.strokeStyle = grad;
-      ctx.lineWidth = 28;
-      ctx.strokeText(text, posx - 3 + i, posy + 2);
+      ctx.strokeStyle = "#000";
+      ctx.lineWidth = 22;
+      ctx.strokeText(text, posx, posy + 2);
     }
+
+  //銀色
+  {
+    var grad = ctx.createLinearGradient(0, 20, 0, 118);
+    grad.addColorStop(0.0, 'rgb(0,15,36)');
+    grad.addColorStop(0.10, 'rgb(255,255,255)');
+    grad.addColorStop(0.18, 'rgb(55,58,59)');
+    grad.addColorStop(0.25, 'rgb(55,58,59)');
+    grad.addColorStop(0.5, 'rgb(200,200,200)');
+    grad.addColorStop(0.75, 'rgb(55,58,59)');
+    grad.addColorStop(0.85, 'rgb(25,20,31)');
+    grad.addColorStop(0.91, 'rgb(240,240,240)');
+    grad.addColorStop(0.95, 'rgb(166,175,194)');
+    grad.addColorStop(1, 'rgb(50,50,50)');
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 20;
+    ctx.strokeText(text, posx, posy + 2);
   }
 
   //黒色
   {
     ctx.strokeStyle = "#000000";
-    ctx.lineWidth = 22;
+    ctx.lineWidth = 16;
     ctx.strokeText(text, posx, posy);
   }
 
   //金色
   {
     var grad = ctx.createLinearGradient(0, 20, 0, 100);
-    grad.addColorStop(0.3, 'rgb(255, 255, 255)');
-    grad.addColorStop(0.5, 'rgb(240, 180, 5)');
-    grad.addColorStop(0.8, 'rgb(89, 33, 0)');
-    grad.addColorStop(1, 'rgb(240, 180, 5)');
+    grad.addColorStop(0, 'rgb(253,241,0)');
+    grad.addColorStop(0.25, 'rgb(245,253,187)');
+    grad.addColorStop(0.4, 'rgb(255,255,255)');
+    grad.addColorStop(0.75, 'rgb(253,219,9)');
+    grad.addColorStop(0.9, 'rgb(127,53,0)');
+    grad.addColorStop(1, 'rgb(243,196,11)');
     ctx.strokeStyle = grad;
-    ctx.lineWidth = 19;
+    ctx.lineWidth = 10;
     ctx.strokeText(text, posx, posy);
   }
 
@@ -75,7 +91,7 @@ function redrawTop() {
   //赤
   {
     var grad = ctx.createLinearGradient(0, 20, 0, 100);
-    grad.addColorStop(0, 'rgb(230, 0, 0)');
+    grad.addColorStop(0, 'rgb(255, 100, 0)');
     grad.addColorStop(0.5, 'rgb(123, 0, 0)');
     grad.addColorStop(0.51, 'rgb(240, 0, 0)');
     grad.addColorStop(1, 'rgb(5, 0, 0)');
@@ -109,67 +125,83 @@ function redrawBottom() {
   var posy = 100 + offsetY;
   var text = textboxes.bottom.value;
 
-  //銀色
-  for (var i = 0; i < 10; i++) {
-    {
-      var grad = ctx.createLinearGradient(0+offsetX, 20+offsetY, 0+offsetX, 100+offsetY);
-      grad.addColorStop(0, 'rgb(' + 10 * i + ', ' + 10 * i + ', ' + 10 * i + ')');
-      ctx.strokeStyle = grad;
-      ctx.lineWidth = 28;
-      ctx.strokeText(text, posx - 3 + i, posy + 2);
-    }
+  //黒色
+  {
+    ctx.strokeStyle = "#000";
+    ctx.lineWidth = 30;
+    ctx.strokeText(text, posx + 3, posy + 2);
+  }
+
+  // 銀
+  {
+    var grad = ctx.createLinearGradient(0+offsetX, 20+offsetY, 0+offsetX, 118+offsetY);
+    grad.addColorStop(0, 'rgb(0,15,36)');
+    grad.addColorStop(0.25, 'rgb(250,250,250)');
+    grad.addColorStop(0.5, 'rgb(150,150,150)');
+    grad.addColorStop(0.75, 'rgb(55,58,59)');
+    grad.addColorStop(0.85, 'rgb(25,20,31)');
+    grad.addColorStop(0.91, 'rgb(240,240,240)');
+    grad.addColorStop(0.95, 'rgb(166,175,194)');
+    grad.addColorStop(1, 'rgb(50,50,50)');
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 27;
+    ctx.strokeText(text, posx + 3, posy + 2);
   }
 
   //黒色
   {
-    ctx.strokeStyle = "#000000";
+    ctx.strokeStyle = "#10193A";
     ctx.lineWidth = 22;
     ctx.strokeText(text, posx, posy);
   }
-  //金色
+
+  // 白
   {
-    var grad = ctx.createLinearGradient(0+offsetX, 20+offsetY, 0+offsetX, 100+offsetY);
-    grad.addColorStop(0.3, 'rgb(214, 220, 227)');
-    grad.addColorStop(0.5, 'rgb(218, 224, 232)');
-    grad.addColorStop(0.8, 'rgb(207, 207, 209)');
-    grad.addColorStop(1, 'rgb(127,127,128)');
-    ctx.strokeStyle = grad;
-    ctx.lineWidth = 19;
+    ctx.strokeStyle = "#DDD";
+    ctx.lineWidth = 15;
     ctx.strokeText(text, posx, posy);
   }
 
-  //白
-  ctx.lineWidth = 6;
-  ctx.strokeStyle = '#10193A';
-  ctx.strokeText(text, posx, posy - 3);
 
-  //赤
+  //紺
   {
     var grad = ctx.createLinearGradient(0+offsetX, 20+offsetY, 0+offsetX, 100+offsetY);
-    grad.addColorStop(0, 'rgb(192,204,217)');
-    grad.addColorStop(0.05, 'rgb(212,220,228)');
-    grad.addColorStop(0.15, 'rgb(241,242,243)');
-    grad.addColorStop(0.23, 'rgb(241,242,243)');
-    grad.addColorStop(0.5, 'rgb(190,190,190)');
-    grad.addColorStop(0.51, 'rgb(220,220,221)');
-    grad.addColorStop(0.52, 'rgb(220,220,220)');
-    grad.addColorStop(1.0, 'rgb(239,240,242)');
-    ctx.lineWidth = 4;
+    grad.addColorStop(0, 'rgb(16,25,58)');
+    grad.addColorStop(0.03, 'rgb(255,255,255)');
+    grad.addColorStop(0.08, 'rgb(16,25,58)');
+    grad.addColorStop(0.2, 'rgb(16,25,58)');
+    grad.addColorStop(1, 'rgb(16,25,58)');
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 14;
+    ctx.strokeText(text, posx, posy);
+  }
+
+
+  //銀
+  {
+    var grad = ctx.createLinearGradient(0+offsetX, 20+offsetY, 0+offsetX, 100+offsetY);
+    grad.addColorStop(0, 'rgb(245,246,248)');
+    grad.addColorStop(0.15, 'rgb(255,255,255)');
+    grad.addColorStop(0.35, 'rgb(195,213,220)');
+    grad.addColorStop(0.5, 'rgb(160,190,201)');
+    grad.addColorStop(0.51, 'rgb(160,190,201)');
+    grad.addColorStop(0.52, 'rgb(196,215,222)');
+    grad.addColorStop(1.0, 'rgb(255,255,255)');
+    ctx.lineWidth = 5;
     ctx.strokeStyle = grad;
     ctx.strokeText(text, posx, posy - 3);
   }
 
-  //赤
+  //銀
   {
     var grad = ctx.createLinearGradient(0+offsetX, 20+offsetY, 0+offsetX, 100+offsetY);
-    grad.addColorStop(0, 'rgb(192,204,217)');
-    grad.addColorStop(0.05, 'rgb(212,220,228)');
-    grad.addColorStop(0.15, 'rgb(241,242,243)');
-    grad.addColorStop(0.23, 'rgb(241,242,243)');
-    grad.addColorStop(0.5, 'rgb(190,190,190)');
-    grad.addColorStop(0.51, 'rgb(220,220,221)');
-    grad.addColorStop(0.52, 'rgb(220,220,220)');
-    grad.addColorStop(1.0, 'rgb(239,240,242)');
+    grad.addColorStop(0, 'rgb(245,246,248)');
+    grad.addColorStop(0.15, 'rgb(255,255,255)');
+    grad.addColorStop(0.35, 'rgb(195,213,220)');
+    grad.addColorStop(0.5, 'rgb(160,190,201)');
+    grad.addColorStop(0.51, 'rgb(160,190,201)');
+    grad.addColorStop(0.52, 'rgb(196,215,222)');
+    grad.addColorStop(1.0, 'rgb(255,255,255)');
     ctx.fillStyle = grad;
     ctx.fillText(text, posx, posy - 3);
   }
