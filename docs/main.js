@@ -34,7 +34,7 @@ function saveImage() {
 }
 
 function redrawTop() {
-  ctx.font = '100px mplus';
+  ctx.font = '100px notobk';
 
   ctx.clearRect(0, 0, canvas.width, canvas.height/2);
   var posx = 70;
