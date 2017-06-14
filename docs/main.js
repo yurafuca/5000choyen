@@ -137,8 +137,8 @@ function redrawBottom() {
   //黒色
   {
     ctx.strokeStyle = "#000";
-    ctx.lineWidth = 30;
-    ctx.strokeText(text, posx + 3, posy + 2);
+    ctx.lineWidth = 27;
+    ctx.strokeText(text, posx + 5, posy + 2);
   }
 
   // 銀
@@ -153,8 +153,8 @@ function redrawBottom() {
     grad.addColorStop(0.95, 'rgb(166,175,194)');
     grad.addColorStop(1, 'rgb(50,50,50)');
     ctx.strokeStyle = grad;
-    ctx.lineWidth = 27;
-    ctx.strokeText(text, posx + 3, posy + 2);
+    ctx.lineWidth = 24;
+    ctx.strokeText(text, posx + 5, posy + 2);
   }
 
   //黒色
@@ -167,7 +167,7 @@ function redrawBottom() {
   // 白
   {
     ctx.strokeStyle = "#DDD";
-    ctx.lineWidth = 15;
+    ctx.lineWidth = 13;
     ctx.strokeText(text, posx, posy);
   }
 
@@ -181,7 +181,7 @@ function redrawBottom() {
     grad.addColorStop(0.2, 'rgb(16,25,58)');
     grad.addColorStop(1, 'rgb(16,25,58)');
     ctx.strokeStyle = grad;
-    ctx.lineWidth = 14;
+    ctx.lineWidth = 12;
     ctx.strokeText(text, posx, posy);
   }
 
