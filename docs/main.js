@@ -127,7 +127,7 @@ function redrawBottom() {
   var offsetX = 250;
   var offsetY = 130;
 
-  ctx.font = '100px yumindb';
+  ctx.font = '100px notoserifbk';
 
   ctx.clearRect(0+offsetX, 0+offsetY, canvas.width, canvas.height/2);
   var posx = 70 + offsetX;
@@ -137,7 +137,7 @@ function redrawBottom() {
   //黒色
   {
     ctx.strokeStyle = "#000";
-    ctx.lineWidth = 27;
+    ctx.lineWidth = 22;
     ctx.strokeText(text, posx + 5, posy + 2);
   }
 
@@ -153,21 +153,21 @@ function redrawBottom() {
     grad.addColorStop(0.95, 'rgb(166,175,194)');
     grad.addColorStop(1, 'rgb(50,50,50)');
     ctx.strokeStyle = grad;
-    ctx.lineWidth = 24;
+    ctx.lineWidth = 19;
     ctx.strokeText(text, posx + 5, posy + 2);
   }
 
   //黒色
   {
     ctx.strokeStyle = "#10193A";
-    ctx.lineWidth = 22;
+    ctx.lineWidth = 17;
     ctx.strokeText(text, posx, posy);
   }
 
   // 白
   {
     ctx.strokeStyle = "#DDD";
-    ctx.lineWidth = 13;
+    ctx.lineWidth = 8;
     ctx.strokeText(text, posx, posy);
   }
 
@@ -181,25 +181,10 @@ function redrawBottom() {
     grad.addColorStop(0.2, 'rgb(16,25,58)');
     grad.addColorStop(1, 'rgb(16,25,58)');
     ctx.strokeStyle = grad;
-    ctx.lineWidth = 12;
+    ctx.lineWidth = 7;
     ctx.strokeText(text, posx, posy);
   }
 
-
-  //銀
-  {
-    var grad = ctx.createLinearGradient(0+offsetX, 20+offsetY, 0+offsetX, 100+offsetY);
-    grad.addColorStop(0, 'rgb(245,246,248)');
-    grad.addColorStop(0.15, 'rgb(255,255,255)');
-    grad.addColorStop(0.35, 'rgb(195,213,220)');
-    grad.addColorStop(0.5, 'rgb(160,190,201)');
-    grad.addColorStop(0.51, 'rgb(160,190,201)');
-    grad.addColorStop(0.52, 'rgb(196,215,222)');
-    grad.addColorStop(1.0, 'rgb(255,255,255)');
-    ctx.lineWidth = 5;
-    ctx.strokeStyle = grad;
-    ctx.strokeText(text, posx, posy - 3);
-  }
 
   //銀
   {
