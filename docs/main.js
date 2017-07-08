@@ -16,9 +16,12 @@ window.onload = function () {
   textBoxes.bottom = document.getElementById("textboxBottom");
   ctx = canvas.getContext('2d');
   ctx.lineJoin = 'round';
-  ctx.setTransform(1,0,-0.4,1,0,0);
-};
 
+  var radios = document.querySelectorAll('input[type=radio][name="draw_mode"]');
+  Array.prototype.forEach.call(radios, function (radio) {
+    radio.addEventListener('change', changeHandler);
+  });
+};
 
 function onDown(e) {
   dragging = true;
@@ -30,17 +33,43 @@ function onMove(e) {
   if (dragging) {
     var dx = e.clientX - drag.x0;
     var dy = e.clientY - drag.y0;
-    redrawBottom(offset.bottom.x + dx);
+    var x = offset.bottom.x + dx;
+    if (getDrawMode() === "image") {
+      redrawImage(x);
+    } else {
+      redrawBottom(x);
+    }
   }
-  if (offset.bottom.y <= e.clientY) {
+  if (canvas.getBoundingClientRect().top + offset.bottom.y <= e.clientY
+      && e.clientY <= canvas.getBoundingClientRect().top + 290) {
     document.body.style.cursor = "move";
+  } else {
+    document.body.style.cursor = "default"
   }
 }
 
 function onUp(e) {
-  dragging = false; // ドラッグ終了
+  dragging = false;
   var dx = e.clientX - drag.x0;
   offset.bottom.x += dx;
+}
+
+function changeHandler(e) {
+  if (this.value === 'image') {
+    document.getElementById('textboxBottom').style.display = "none";
+    document.getElementById('labelBottom').style.display = "none";
+    redrawImage();
+    redrawImage();
+  } else {
+    document.getElementById('textboxBottom').style.display = "inline";
+    document.getElementById('labelBottom').style.display = "inline";
+    redrawBottom();
+  }
+}
+
+function getDrawMode() {
+  var drawMode = document.querySelector('input[name="draw_mode"]:checked').value;
+  return drawMode;
 }
 
 function saveImage() {
@@ -64,6 +93,7 @@ function saveImageData(imagedata) {
 }
 
 function redrawTop() {
+  ctx.setTransform(1,0,-0.4,1,0,0);
   ctx.font = '100px notobk';
 
   ctx.clearRect(0, 0, canvas.width, canvas.height/2);
@@ -152,13 +182,18 @@ function redrawTop() {
 
   actualWidth.top = ctx.measureText(text).width + posx;
 
-  redrawBottom();
+  if (getDrawMode() === "image") {
+    redrawImage();
+  } else {
+    redrawbottom();
+  }
 }
 
-function redrawBottom(offsetX, offsetY) {
+function redrawBottom(offsetX) {
   var offsetX = offsetX || offset.bottom.x;
   var offsetY = offset.bottom.y;
 
+  ctx.setTransform(1, 0, -0.4, 1, 0, 0);
   ctx.font = '100px notoserifbk';
 
   ctx.clearRect(0, 130, canvas.width, canvas.height/2);
@@ -237,14 +272,15 @@ function redrawBottom(offsetX, offsetY) {
 
 }
 
-function redrawImage() {
-  var offsetX = 250;
-  var offsetY = 130;
-
-  ctx.clearRect(0+offsetX, 0+offsetY, canvas.width, canvas.height/2);
+function redrawImage(offsetX) {
+  var offsetX = offsetX || offset.bottom.x;
+  var offsetY = offset.bottom.y;
   var posx = 70 + offsetX;
-  var posy = 100 + offsetY;
+  var posy = 0 + offsetY;
+  ctx.clearRect(0, 130, canvas.width, canvas.height/2);
 
-
-  
+  var image = new Image();
+  image.src = "hoshii.png";
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.drawImage(image, posx + 5, posy + 2);
 }
