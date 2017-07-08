@@ -6,6 +6,7 @@ var textBoxes   = { top: null, bottom: null };
 var dragging    = false;
 var drag        = { x0: 0, y0: 0 };
 var onBottom    = false;
+var image       = new Image();
 
 window.onload = function () {
   canvas = document.getElementById("canvas");
@@ -43,7 +44,7 @@ function onMove(e) {
     }
   }
   if (canvas.getBoundingClientRect().top + offset.bottom.y <= e.clientY
-      && e.clientY <= canvas.getBoundingClientRect().top + 290) {
+      && e.clientY <= canvas.getBoundingClientRect().top + (canvas.height-10)) {
     document.body.style.cursor = "move";
   } else {
     document.body.style.cursor = "default"
@@ -291,12 +292,28 @@ function redrawImage(offsetX) {
   ctx.fillStyle = "white";
   ctx.fillRect(0, 130, canvas.width, canvas.height/2);
 
-  var image = new Image();
-  image.onload = function() {
+  var draw = function() {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.drawImage(image, posx + 5, posy + 2);
+  }
+
+  if (isLoaded(image)) {
+    draw();
+  }
+  image.onload = function() {
+    draw();
   }
   image.src = "hoshii.png";
 
   actualWidth.bottom = 370 + posx;
+}
+
+function isLoaded(image) {
+  if (!image.complete) {
+    return false;
+  }
+  if (typeof image.naturalWidth !== "undefined" && image.naturalWidth === 0) {
+    return false;
+  }
+  return true;
 }
