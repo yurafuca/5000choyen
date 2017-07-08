@@ -17,6 +17,7 @@ window.onload = function () {
   ctx = canvas.getContext('2d');
   ctx.lineJoin = 'round';
   ctx.fillStyle = 'white';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   var radios = document.querySelectorAll('input[type=radio][name="draw_mode"]');
   Array.prototype.forEach.call(radios, function (radio) {
@@ -89,6 +90,8 @@ function saveImageData(imagedata) {
     var ctx = canvas.getContext('2d');
     canvas.width = imagedata.width + 50;
     canvas.height = imagedata.height;
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height + 100);
     ctx.putImageData(imagedata, 0, 0);
 
     var a = document.createElement("a");
@@ -102,7 +105,8 @@ function redrawTop() {
   ctx.setTransform(1,0,-0.4,1,0,0);
   ctx.font = '100px notobk';
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height/2);
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 0, canvas.width, canvas.height/2);
   var posx = 70;
   var posy = 100;
   var text = textBoxes.top.value;
@@ -202,7 +206,8 @@ function redrawBottom(offsetX) {
   ctx.setTransform(1, 0, -0.4, 1, 0, 0);
   ctx.font = '100px notoserifbk';
 
-  ctx.clearRect(0, 130, canvas.width, canvas.height/2);
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 130, canvas.width, canvas.height/2);
   var posx = 70 + offsetX;
   var posy = 100 + offsetY;
   var text = textBoxes.bottom.value;
@@ -283,7 +288,8 @@ function redrawImage(offsetX) {
   var offsetY = offset.bottom.y;
   var posx = 70 + offsetX;
   var posy = 0 + offsetY;
-  ctx.clearRect(0, 130, canvas.width, canvas.height/2);
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 130, canvas.width, canvas.height/2);
 
   var image = new Image();
   image.onload = function() {
