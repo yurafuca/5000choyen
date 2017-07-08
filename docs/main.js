@@ -1,27 +1,58 @@
 var canvas;
 var ctx;
-var textWidth = 0;
-var textboxes = { top: null, bottom: null };
+var offset      = { top: { x: 0, y: 0}, bottom: { x: 250, y: 130} };
+var actualWidth = { top: 0, bottom: 0 };
+var textBoxes   = { top: null, bottom: null };
+var dragging    = false;
+var drag        = { x0: 0, y0: 0 };
+var onBottom    = false;
 
 window.onload = function () {
   canvas = document.getElementById("canvas");
-  textboxes.top = document.getElementById("textboxTop");
-  textboxes.bottom = document.getElementById("textboxBottom");
+  canvas.addEventListener('mousedown', onDown, false);
+  canvas.addEventListener('mousemove', onMove, false);
+  canvas.addEventListener('mouseup', onUp, false);
+  textBoxes.top = document.getElementById("textboxTop");
+  textBoxes.bottom = document.getElementById("textboxBottom");
   ctx = canvas.getContext('2d');
   ctx.lineJoin = 'round';
   ctx.setTransform(1,0,-0.4,1,0,0);
 };
 
+
+function onDown(e) {
+  dragging = true;
+  drag.x0 = e.clientX;
+  drag.y0 = e.clientY;
+}
+
+function onMove(e) {
+  if (dragging) {
+    var dx = e.clientX - drag.x0;
+    var dy = e.clientY - drag.y0;
+    redrawBottom(offset.bottom.x + dx);
+  }
+  if (offset.bottom.y <= e.clientY) {
+    document.body.style.cursor = "move";
+  }
+}
+
+function onUp(e) {
+  dragging = false; // ドラッグ終了
+  var dx = e.clientX - drag.x0;
+  offset.bottom.x += dx;
+}
+
 function saveImage() {
-  var imageData = ctx.getImageData(0, 0, textWidth, canvas.height);
+  const width = Math.max(actualWidth.top, actualWidth.bottom);
+  var imageData = ctx.getImageData(0, 0, width, canvas.height);
   saveImageData(imageData);
 }
 
 function saveImageData(imagedata) {
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
-    var margin = 50;
-    canvas.width = imagedata.width + margin;
+    canvas.width = imagedata.width;
     canvas.height = imagedata.height;
     ctx.putImageData(imagedata, 0, 0);
 
@@ -38,7 +69,7 @@ function redrawTop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height/2);
   var posx = 70;
   var posy = 100;
-  var text = textboxes.top.value;
+  var text = textBoxes.top.value;
 
     //黒色
     {
@@ -119,21 +150,21 @@ function redrawTop() {
     ctx.fillText(text, posx, posy - 3);
   }
 
-  textWidth = Math.max(ctx.measureText(text).width+posx, textWidth);
+  actualWidth.top = ctx.measureText(text).width + posx;
 
   redrawBottom();
 }
 
-function redrawBottom() {
-  var offsetX = 250;
-  var offsetY = 130;
+function redrawBottom(offsetX, offsetY) {
+  var offsetX = offsetX || offset.bottom.x;
+  var offsetY = offset.bottom.y;
 
   ctx.font = '100px notoserifbk';
 
-  ctx.clearRect(0+offsetX, 0+offsetY, canvas.width, canvas.height/2);
+  ctx.clearRect(0, 130, canvas.width, canvas.height/2);
   var posx = 70 + offsetX;
   var posy = 100 + offsetY;
-  var text = textboxes.bottom.value;
+  var text = textBoxes.bottom.value;
 
   //黒色
   {
@@ -201,5 +232,19 @@ function redrawBottom() {
     ctx.fillText(text, posx, posy - 3);
   }
 
-  // textWidth = Math.max(ctx.measureText(text).width+offsetX, textWidth+offsetX);
+  // textWidth = Math.maox(ctx.measureText(text).width+offsetX, textWidth+offsetX);
+  actualWidth.bottom = ctx.measureText(text).width + posx;
+
+}
+
+function redrawImage() {
+  var offsetX = 250;
+  var offsetY = 130;
+
+  ctx.clearRect(0+offsetX, 0+offsetY, canvas.width, canvas.height/2);
+  var posx = 70 + offsetX;
+  var posy = 100 + offsetY;
+
+
+  
 }
