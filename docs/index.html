@@ -16,6 +16,24 @@
 		}
 		div {
 			display: block;
+			margin: 10px 0;
+		}
+		.button-radio input[type="radio"] {
+			display:none; 
+		}
+		.button-radio label {
+			display:inline-block;
+			color: black;
+			background-color: lightgray;
+			padding:3px 10px;
+		}
+		.button-radio input[type="radio"]:checked + label {
+			color: white;
+			background-color: blue;
+		}
+		.button-radio input[type="radio"]:checked + label {
+			color: white;
+			background-color: blue;
 		}
 	</style>
 	<script src="main.js"></script>
@@ -24,22 +42,35 @@
 <body>
 	<h1>5000兆円ジェネレーター super</h1>
 	<div>
+		<p>5000兆円風の画像を生成するツールです。<font color="blue"> `欲しい!`</font> も生成できます。</p>
+	</div>
+	<div>
 		<canvas id="canvas" width="1500px" height="300px"></canvas>
 	</div>
 	<div>
 		<canvas id="canvas2" width="1500px" height="300px" style="display: none"></canvas>
 	</div>
-	<div>
-		赤色の文字<input type="text" id="textboxTop" size="50" value="" spellcheck="false" oninput="redrawTop();"><br>
-		銀色の文字<input type="text" id="textboxBottom" size="50" value="" spellcheck="false" oninput="redrawBottom();">
-		<button type="button" onclick="saveImage();">画像を保存する</button>
+	<div class="button-radio">
+		<font color="blue"> `欲しい!`</font> の描画に
+		<input id="bar1" type="radio" name="draw_mode" value="image">
+		<label for="bar1">元ネタの画像を使う</label>
+		<input id="bar2" type="radio" name="draw_mode" value="text" checked>
+		<label for="bar2">文字を生成する</label>
 	</div>
 	<div>
-		<p>5000兆円風の画像を生成するツールです。文字によっては潰れてしまうことがあります。</p>
-		<p><font color="blue"> `欲しい!` のような銀色の文字も生成できます。</font></p>
+		<span id="labelTop">赤色の文字</span>
+		<input type="text" id="textboxTop" size="50" value="" spellcheck="false" oninput="redrawTop();">
+		<button type="button" onclick="saveImage();">画像を保存する</button><br>
+		<span id="labelBottom">銀色の文字</span>
+		<input type="text" id="textboxBottom" size="50" value="" spellcheck="false" oninput="redrawBottom();">
 	</div>
 	<div>
-		---
+		<p>---</p>
+		<p>
+			`欲しい!` はドラッグできます。<br>
+			<img src="demo.gif" style="max-width:600px">
+		</p>
+		<p>---</p>
 	</div>
 	<div>
 		原作者:<a href="https://twitter.com/rarity_rare25">@rarity_rare25</a> 
