@@ -190,7 +190,7 @@ function redrawTop() {
   if (getDrawMode() === "image") {
     redrawImage();
   } else {
-    redrawbottom();
+    redrawBottom();
   }
 }
 
