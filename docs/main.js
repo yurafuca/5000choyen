@@ -65,6 +65,11 @@ function changeHandler(e) {
     document.getElementById('labelBottom').style.display = "inline";
     redrawBottom();
   }
+    if (getDrawMode() === "image") {
+    redrawImage();
+  } else {
+    redrawbottom();
+  }
 }
 
 function getDrawMode() {
@@ -280,7 +285,9 @@ function redrawImage(offsetX) {
   ctx.clearRect(0, 130, canvas.width, canvas.height/2);
 
   var image = new Image();
+  image.onload = function() {
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.drawImage(image, posx + 5, posy + 2);
+  }
   image.src = "hoshii.png";
-  ctx.setTransform(1,0,0,1,0,0);
-  ctx.drawImage(image, posx + 5, posy + 2);
 }
