@@ -102,6 +102,7 @@ function redrawTop() {
   ctx.setTransform(1,0,-0.4,1,0,0);
   ctx.font = '100px notobk';
 
+  ctx.fillStyle = "white";
   ctx.clearRect(0, 0, canvas.width, canvas.height/2);
   var posx = 70;
   var posy = 100;
@@ -202,6 +203,7 @@ function redrawBottom(offsetX) {
   ctx.setTransform(1, 0, -0.4, 1, 0, 0);
   ctx.font = '100px notoserifbk';
 
+  ctx.fillStyle = "white";
   ctx.clearRect(0, 130, canvas.width, canvas.height/2);
   var posx = 70 + offsetX;
   var posy = 100 + offsetY;
@@ -283,7 +285,8 @@ function redrawImage(offsetX) {
   var offsetY = offset.bottom.y;
   var posx = 70 + offsetX;
   var posy = 0 + offsetY;
-  ctx.clearRect(0, 130, canvas.width, canvas.height/2);
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 130, canvas.width, canvas.height/2);
 
   var image = new Image();
   image.onload = function() {
