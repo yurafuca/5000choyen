@@ -69,7 +69,7 @@ function changeHandler(e) {
     if (getDrawMode() === "image") {
     redrawImage();
   } else {
-    redrawbottom();
+    redrawBottom();
   }
 }
 
