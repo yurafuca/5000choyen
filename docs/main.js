@@ -88,7 +88,7 @@ function saveImage() {
 function saveImageData(imagedata) {
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
-    canvas.width = imagedata.width + 50;
+    canvas.width = imagedata.width + 10;
     canvas.height = imagedata.height;
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width, canvas.height + 100);
@@ -298,5 +298,5 @@ function redrawImage(offsetX) {
   }
   image.src = "hoshii.png";
 
-  actualWidth.bottom = 360 + posx;
+  actualWidth.bottom = 370 + posx;
 }
