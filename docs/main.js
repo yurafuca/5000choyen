@@ -16,6 +16,7 @@ window.onload = function () {
   textBoxes.bottom = document.getElementById("textboxBottom");
   ctx = canvas.getContext('2d');
   ctx.lineJoin = 'round';
+  ctx.fillStyle = 'white';
 
   var radios = document.querySelectorAll('input[type=radio][name="draw_mode"]');
   Array.prototype.forEach.call(radios, function (radio) {
