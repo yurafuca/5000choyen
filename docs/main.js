@@ -1,19 +1,7 @@
-var canvases = {
-  top: null,
-  bototm: null
-};
-
 var canvas;
-
-var ctxs = {
-  top: null,
-  bottom: null
-};
-
-var textboxes = {
-  top: null,
-  bottom: null
-};
+var ctx;
+var textWidth = 0;
+var textboxes = { top: null, bottom: null };
 
 window.onload = function () {
   canvas = document.getElementById("canvas");
@@ -25,12 +13,23 @@ window.onload = function () {
 };
 
 function saveImage() {
-  var a = document.createElement("a");
-  a.href = canvas.toDataURL("image/png");
-  a.setAttribute("download", "image.png");
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  var imageData = ctx.getImageData(0, 0, textWidth, canvas.height);
+  saveImageData(imageData);
+}
+
+function saveImageData(imagedata) {
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+    var margin = 50;
+    canvas.width = imagedata.width + margin;
+    canvas.height = imagedata.height;
+    ctx.putImageData(imagedata, 0, 0);
+
+    var a = document.createElement("a");
+    a.href = canvas.toDataURL("image/png");
+    a.setAttribute("target", "_blank");
+    document.body.appendChild(a);
+    a.click();
 }
 
 function redrawTop() {
@@ -120,6 +119,8 @@ function redrawTop() {
     ctx.fillText(text, posx, posy - 3);
   }
 
+  textWidth = Math.max(ctx.measureText(text).width+posx, textWidth);
+
   redrawBottom();
 }
 
@@ -199,4 +200,6 @@ function redrawBottom() {
     ctx.fillStyle = grad;
     ctx.fillText(text, posx, posy - 3);
   }
+
+  // textWidth = Math.max(ctx.measureText(text).width+offsetX, textWidth+offsetX);
 }
