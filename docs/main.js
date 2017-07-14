@@ -213,70 +213,71 @@ function redrawBottom(offsetX) {
   var posy = 100 + offsetY;
   var text = textBoxes.bottom.value;
 
-  //黒色
+  //6
   {
-    ctx.strokeStyle = "#000";
-    ctx.lineWidth = 22;
-    ctx.strokeText(text, posx + 5, posy + 2);
+    ctx.strokeStyle = "#f00";
+    ctx.lineWidth = 16;
+    ctx.strokeText(text, posx + 3, posy + 3);
   }
 
-  // 銀
+  // 5
   {
     var grad = ctx.createLinearGradient(0+offsetX, 20+offsetY, 0+offsetX, 118+offsetY);
-    grad.addColorStop(0, 'rgb(0,15,36)');
-    grad.addColorStop(0.25, 'rgb(250,250,250)');
-    grad.addColorStop(0.5, 'rgb(150,150,150)');
-    grad.addColorStop(0.75, 'rgb(55,58,59)');
-    grad.addColorStop(0.85, 'rgb(25,20,31)');
-    grad.addColorStop(0.91, 'rgb(240,240,240)');
-    grad.addColorStop(0.95, 'rgb(166,175,194)');
-    grad.addColorStop(1, 'rgb(50,50,50)');
-    ctx.strokeStyle = grad;
-    ctx.lineWidth = 19;
-    ctx.strokeText(text, posx + 5, posy + 2);
+    // grad.addColorStop(0, 'rgb(0,15,36)');
+    // grad.addColorStop(0.25, 'rgb(250,250,250)');
+    // grad.addColorStop(0.5, 'rgb(150,150,150)');
+    // grad.addColorStop(0.75, 'rgb(55,58,59)');
+    // grad.addColorStop(0.85, 'rgb(25,20,31)');
+    // grad.addColorStop(0.91, 'rgb(240,240,240)');
+    // grad.addColorStop(0.95, 'rgb(166,175,194)');
+    // grad.addColorStop(1, 'rgb(50,50,50)');
+    ctx.strokeStyle = '#0f0';
+    ctx.lineWidth = 13;
+    ctx.strokeText(text, posx+3, posy+3);
   }
 
-  //黒色
+  //4
   {
-    ctx.strokeStyle = "#10193A";
-    ctx.lineWidth = 17;
+    ctx.strokeStyle = "#f00";
+    ctx.lineWidth = 10;
     ctx.strokeText(text, posx, posy);
   }
 
-  // 白
+  // 3
   {
-    ctx.strokeStyle = "#DDD";
-    ctx.lineWidth = 8;
-    ctx.strokeText(text, posx, posy);
-  }
-
-
-  //紺
-  {
-    var grad = ctx.createLinearGradient(0+offsetX, 20+offsetY, 0+offsetX, 100+offsetY);
-    grad.addColorStop(0, 'rgb(16,25,58)');
-    grad.addColorStop(0.03, 'rgb(255,255,255)');
-    grad.addColorStop(0.08, 'rgb(16,25,58)');
-    grad.addColorStop(0.2, 'rgb(16,25,58)');
-    grad.addColorStop(1, 'rgb(16,25,58)');
-    ctx.strokeStyle = grad;
+    ctx.strokeStyle = "#0f0";
     ctx.lineWidth = 7;
     ctx.strokeText(text, posx, posy);
   }
 
 
-  //銀
+  //2
   {
     var grad = ctx.createLinearGradient(0+offsetX, 20+offsetY, 0+offsetX, 100+offsetY);
-    grad.addColorStop(0, 'rgb(245,246,248)');
-    grad.addColorStop(0.15, 'rgb(255,255,255)');
-    grad.addColorStop(0.35, 'rgb(195,213,220)');
-    grad.addColorStop(0.5, 'rgb(160,190,201)');
-    grad.addColorStop(0.51, 'rgb(160,190,201)');
-    grad.addColorStop(0.52, 'rgb(196,215,222)');
-    grad.addColorStop(1.0, 'rgb(255,255,255)');
-    ctx.fillStyle = grad;
-    ctx.fillText(text, posx, posy - 3);
+    // grad.addColorStop(0, 'rgb(16,25,58)');
+    // grad.addColorStop(0.03, 'rgb(255,255,255)');
+    // grad.addColorStop(0.08, 'rgb(16,25,58)');
+    // grad.addColorStop(0.2, 'rgb(16,25,58)');
+    // grad.addColorStop(1, 'rgb(16,25,58)');
+    ctx.strokeStyle = '#f00';
+    ctx.lineWidth = 4;
+    ctx.strokeText(text, posx, posy);
+  }
+
+
+  //1
+  {
+    var grad = ctx.createLinearGradient(0+offsetX, 20+offsetY, 0+offsetX, 100+offsetY);
+    // grad.addColorStop(0, 'rgb(245,246,248)');
+    // grad.addColorStop(0.15, 'rgb(255,255,255)');
+    // grad.addColorStop(0.35, 'rgb(195,213,220)');
+    // grad.addColorStop(0.5, 'rgb(160,190,201)');
+    // grad.addColorStop(0.51, 'rgb(160,190,201)');
+    // grad.addColorStop(0.52, 'rgb(196,215,222)');
+    // grad.addColorStop(1.0, 'rgb(255,255,255)');
+    ctx.fillStyle = '#0f0';
+    // ctx.strokeText(text, posx, posy);
+    ctx.fillText(text, posx, posy);
   }
 
   // textWidth = Math.maox(ctx.measureText(text).width+offsetX, textWidth+offsetX);
