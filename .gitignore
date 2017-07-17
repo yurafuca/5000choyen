@@ -1,0 +1,6 @@
+webstore/
+node_modules/
+dist/
+.log
+
+*.log
