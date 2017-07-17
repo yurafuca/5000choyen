@@ -4,3 +4,4 @@ dist/
 .log
 
 *.log
+*.DS_Store
