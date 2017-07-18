@@ -18,24 +18,32 @@
 			display: block;
 			margin: 10px 0;
 		}
-		.button-radio input[type="radio"] {
+		input[type="radio"] {
 			display:none; 
 		}
-		.button-radio label {
+		label {
 			display:inline-block;
 			color: black;
 			background-color: lightgray;
 			padding:3px 10px;
 		}
-		.button-radio input[type="radio"]:checked + label {
-			color: white;
-			background-color: blue;
+		.text-order {
+			/* display: none; */
 		}
-		.button-radio input[type="radio"]:checked + label {
+		.text-order input[type="radio"]:checked + label {
+			color: white !important;
+			background-color: blue !important;
+		}
+		.background-order input[type="radio"]:checked + label {
 			color: white;
-			background-color: blue;
+			background-color: black;
 		}
 	</style>
+	<script src="Inherits.js"></script>
+	<script src="Settings.js"></script>
+	<script src="Logo.js"></script>
+	<script src="canvasImage.js"></script>
+	<script src="canvas.js"></script>
 	<script src="main.js"></script>
 </head>
 
@@ -50,22 +58,29 @@
 	<div>
 		<canvas id="canvas2" width="1500px" height="300px" style="display: none"></canvas>
 	</div>
-	<div class="button-radio">
-		<font color="blue"> `欲しい!`</font> の描画に
-		<input id="bar1" type="radio" name="draw_mode" value="image">
+	  <div class="text-order">
+		<font color="blue">`欲しい!`</font> の描画に
+		<input id="bar1" type="radio" name="text-order" value="image">
 		<label for="bar1">元ネタの画像を使う</label>
-		<input id="bar2" type="radio" name="draw_mode" value="text" checked>
+		<input id="bar2" type="radio" name="text-order" value="text" checked>
 		<label for="bar2">文字を生成する</label>
+	</div>  
+	<div class="background-order">
+		画像を保存するとき背景色を
+		<input id="bar3" type="radio" name="background-order" value="transparent">
+		<label for="bar3">透明にする</label>
+		<input id="bar4" type="radio" name="background-order" value="white" checked>
+		<label for="bar4">白にする</label>
 	</div>
 	<div>
 		<span id="labelTop">赤色の文字</span>
-		<input type="text" id="textboxTop" size="50" value="" spellcheck="false" oninput="redrawTop();">
+		<input type="text" id="textboxTop" size="50" value="" spellcheck="false" oninput="_canvas.redrawTop();">
 		<br>
 		<span id="labelBottom">銀色の文字</span>
-		<input type="text" id="textboxBottom" size="50" value="" spellcheck="false" oninput="redrawBottom();">
+		<input type="text" id="textboxBottom" size="50" value="" spellcheck="false" oninput="_canvas.redrawBottom();">
 	</div>
 	<div>
-		<button type="button" onclick="saveImage();">画像を保存する</button>
+		<button type="button" onclick="_canvas.save();">画像を保存する</button>
 	</div>
 	<div>
 		<p>---</p>
