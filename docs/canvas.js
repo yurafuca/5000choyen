@@ -1,34 +1,38 @@
-/* globals CanvasImage */
-
-var Canvas = function (canvas) {
-  canvas.addEventListener('mousedown', this.onDown.bind(this), false);
-  canvas.addEventListener('mousemove', this.onMove.bind(this), false);
-  canvas.addEventListener('mouseup', this.onUp.bind(this), false);
-
+/* globals CanvasImage, Logo, Settings */
+const LOGO_SRC = `hoshii.png`;
+var Canvas = function(canvas) {
   this.canvas = canvas;
-  this.ctx = canvas.getContext('2d');
-  this.actualWidth = { top: 0, bottom: 0 };
-  this.offset = { top: { x: 0, y: 0 }, bottom: { x: 250, y: 130 } };
-  this.dragging = false;
+  this.canvas.addEventListener('mousedown', this.onDown.bind(this), false);
+  this.canvas.addEventListener('mousemove', this.onMove.bind(this), false);
+  this.canvas.addEventListener('mouseup', this.onUp.bind(this), false);
 
-  this.dragPosition = { x0: 0, y0: 0 };
+  this.ctx = canvas.getContext('2d');
   this.ctx.lineJoin = 'round';
   this.ctx.fillStyle = 'white';
-  this.ctx.fillRect(0, 0, canvas.width, canvas.height);
+  this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+  
+  this.actualWidth = { top: 0, bottom: 0 };
+  this.offset = { top: { x: 0, y: 0 }, bottom: { x: 250, y: 130 } };
+
+  this.logo = new Logo();
+  this.logo.setSrc(LOGO_SRC);
+
+  this.dragging = false;
+  this.dragPosition = { x0: 0, y0: 0 };
 }
 
-Canvas.prototype.onDown = function (e) {
+Canvas.prototype.onDown = function(e) {
   this.dragging = true;
   this.dragPosition.x0 = e.clientX;
   this.dragPosition.y0 = e.clientY;
 };
 
-Canvas.prototype.onMove = function (e) {
+Canvas.prototype.onMove = function(e) {
   if (this.dragging) {
     var dx = e.clientX - this.dragPosition.x0;
     var dy = e.clientY - this.dragPosition.y0;
     var x = this.offset.bottom.x + dx;
-    if (this.drawMode() === "image") {
+    if (Settings.get(`TEXT_ORDER`) === "image") {
       this.redrawImage(x);
     } else {
       this.redrawBottom(x);
@@ -56,15 +60,21 @@ Canvas.prototype.onUp = function (e) {
   this.dragging = false;
 };
 
-Canvas.prototype.drawMode = function(e) {
-  return document.querySelector('input[name="draw_mode"]:checked').value;
-}
-
 Canvas.prototype.redrawTop = function () {
   this.ctx.setTransform(1, 0, -0.4, 1, 0, 0);
   this.ctx.font = '100px notobk';
-  this.ctx.fillStyle = "white";
-  this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height / 2);
+
+  var order = Settings.get(`BACKGROUND_ORDER`);
+  if (order === `white`) {
+    this.ctx.fillStyle = order;
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height / 2);
+  } else if (order === `transparent`) {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height / 2);
+  }
+  // if (Settings.get(`BACKGROUND_ORDER`) === 'white') {
+  //   this.ctx.fillStyle = "white";
+  //   this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height / 2);
+  // }
   
   var text = document.getElementById("textboxTop").value;
   var posx = 70;
@@ -79,7 +89,7 @@ Canvas.prototype.redrawTop = function () {
 
   //銀色 
   {
-    var grad = this.ctx.createLinearGradient(0, 24, 0, 122);
+    const grad = this.ctx.createLinearGradient(0, 24, 0, 122);
     grad.addColorStop(0.0, 'rgb(0,15,36)');
     grad.addColorStop(0.10, 'rgb(255,255,255)');
     grad.addColorStop(0.18, 'rgb(55,58,59)');
@@ -104,7 +114,7 @@ Canvas.prototype.redrawTop = function () {
 
   //金色 
   {
-    var grad = this.ctx.createLinearGradient(0, 20, 0, 100);
+    const grad = this.ctx.createLinearGradient(0, 20, 0, 100);
     grad.addColorStop(0, 'rgb(253,241,0)');
     grad.addColorStop(0.25, 'rgb(245,253,187)');
     grad.addColorStop(0.4, 'rgb(255,255,255)');
@@ -128,7 +138,7 @@ Canvas.prototype.redrawTop = function () {
 
   //赤 
   {
-    var grad = this.ctx.createLinearGradient(0, 20, 0, 100);
+    const grad = this.ctx.createLinearGradient(0, 20, 0, 100);
     grad.addColorStop(0, 'rgb(255, 100, 0)');
     grad.addColorStop(0.5, 'rgb(123, 0, 0)');
     grad.addColorStop(0.51, 'rgb(240, 0, 0)');
@@ -140,7 +150,7 @@ Canvas.prototype.redrawTop = function () {
 
   //赤 
   {
-    var grad = this.ctx.createLinearGradient(0, 20, 0, 100);
+    const grad = this.ctx.createLinearGradient(0, 20, 0, 100);
     grad.addColorStop(0, 'rgb(230, 0, 0)');
     grad.addColorStop(0.5, 'rgb(123, 0, 0)');
     grad.addColorStop(0.51, 'rgb(240, 0, 0)');
@@ -151,7 +161,7 @@ Canvas.prototype.redrawTop = function () {
 
   this.actualWidth.top = this.ctx.measureText(text).width + posx;
 
-  if (this.drawMode() === "image") {
+  if (Settings.get(`TEXT_ORDER`) === "image") {
     this.redrawImage();
   } else {
     this.redrawBottom();
@@ -164,10 +174,21 @@ Canvas.prototype.redrawBottom = function (offsetX) {
 
   this.ctx.setTransform(1, 0, -0.4, 1, 0, 0);
   this.ctx.font = '100px notoserifbk';
-  this.ctx.fillStyle = "white";
-  this.ctx.fillRect(0, 130, this.canvas.width, this.canvas.height / 2);
+
+  var order = Settings.get(`BACKGROUND_ORDER`);
+  if (order === `white`) {
+    this.ctx.fillStyle = order;
+    this.ctx.fillRect(0, 130, this.canvas.width, this.canvas.height / 2);
+  } else if (order === `transparent`) {
+    this.ctx.clearRect(0, 130, this.canvas.width, this.canvas.height / 2);
+  }
+  // if (Settings.get(`BACKGROUND_ORDER`) === 'white') {
+  //   this.ctx.fillStyle = "white";
+  //   this.ctx.fillRect(0, 130, this.canvas.width, this.canvas.height / 2);
+  // }
   
-  var text = document.getElementById("textboxBottom").value;
+  // 全角 `!` は見栄えをよくするために半角に置換する．
+  var text = document.getElementById("textboxBottom").value.replace(/！/, `!`);
   var posx = 70 + offsetX;
   var posy = 100 + offsetY;
 
@@ -180,7 +201,7 @@ Canvas.prototype.redrawBottom = function (offsetX) {
 
   // 銀 
   {
-    var grad = this.ctx.createLinearGradient(
+    const grad = this.ctx.createLinearGradient(
       0 + offsetX,
       20 + offsetY,
       0 + offsetX,
@@ -215,7 +236,7 @@ Canvas.prototype.redrawBottom = function (offsetX) {
 
   //紺 
   {
-    var grad = this.ctx.createLinearGradient(
+    const grad = this.ctx.createLinearGradient(
       0 + offsetX,
       20 + offsetY, 
       0 + offsetX,
@@ -233,7 +254,7 @@ Canvas.prototype.redrawBottom = function (offsetX) {
 
   //銀 
   {
-    var grad = this.ctx.createLinearGradient(
+    const grad = this.ctx.createLinearGradient(
       0 + offsetX,
       20 + offsetY,
       0 + offsetX,
@@ -255,29 +276,27 @@ Canvas.prototype.redrawBottom = function (offsetX) {
 }
 
 Canvas.prototype.redrawImage = function(offsetX) {
-  var offsetX = offsetX || offset.bottom.x;
-  var offsetY = offset.bottom.y;
+  var offsetX = offsetX || this.offset.bottom.x;
+  var offsetY = this.offset.bottom.y;
   var posx = 70 + offsetX;
   var posy = 0 + offsetY;
-  this.ctx.fillStyle = "white";
-  this.ctx.fillRect(0, 130, this.canvas.width, this.canvas.height / 2);
 
-  var draw = function () {
-    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
-    this.ctx.drawImage(image, posx + 5, posy + 2);
+  var order = Settings.get(`BACKGROUND_ORDER`);
+  if (order === `white`) {
+    this.ctx.fillStyle = order;
+    this.ctx.fillRect(0, 130, this.canvas.width, this.canvas.height / 2);
+  } else if (order === `transparent`) {
+    this.ctx.clearRect(0, 130, this.canvas.width, this.canvas.height / 2);
   }
 
-  if (isLoaded(image)) {
-    draw();
+  if (this.logo.isLoaded()) {
+    this.logo.drawTo(this.ctx, posx, posy);
+  } else {
+    this.logo.onload = function() { this.logo.drawTo(this.ctx, posx, posy) }
   }
-  image.onload = function () {
-    draw();
-  }
-  image.src = "hoshii.png";
 
-  actualWidth.bottom = 370 + posx;
+  this.actualWidth.bottom = 370 + posx;
 }
-
 
 Canvas.prototype.save = function() {
   var width = Math.max(this.actualWidth.top, this.actualWidth.bottom);
