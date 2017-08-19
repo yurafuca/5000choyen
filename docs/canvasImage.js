@@ -26,7 +26,7 @@ CanvasImage.prototype.saveData = function(imagedata) {
 
   var a = document.createElement("a");
   a.href = canvas.toDataURL("image/png");
-  a.setAttribute("target", "_blank");
+  a.setAttribute("download", "result.png");
   document.body.appendChild(a);
   a.click();
 }
