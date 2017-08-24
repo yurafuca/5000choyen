@@ -1,4 +1,4 @@
-var Logo = function() {
+var Hoshii = function() {
   this._logo = new Image();
 };
 

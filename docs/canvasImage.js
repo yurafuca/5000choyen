@@ -17,11 +17,6 @@ CanvasImage.prototype.saveData = function(imagedata) {
   
   var ctx = canvas.getContext('2d');
 
-  // if (Settings.get(`BACKGROUND_ORDER`) === 'white') {
-  //   ctx.fillStyle = 'white';
-  //   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  // }
-
   ctx.putImageData(imagedata, 0, 0);
 
   var a = document.createElement("a");
