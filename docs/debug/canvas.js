@@ -75,7 +75,7 @@ Canvas.prototype.redrawTop = function () {
   const x     = 70;
   const y     = 100;
   console.log(SETTINGS);
-  const order = SETTINGS.TEXT_ORDER();
+  const order = SETTINGS.BACKGROUND_ORDER();
   this.drawer.redrawTop(text, x, y, order);
   if (order === "image")
   this.redrawImage();
