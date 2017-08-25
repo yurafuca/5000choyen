@@ -6,8 +6,8 @@ var Drawer = function(ctx) {
     bottom: 0
   };
   this.logo = new Hoshii();
-  // this.logo.setSrc(`images/hoshii.png`);
-  this.logo.setSrc('https://raw.githubusercontent.com/yurafuca/5000choyen/master/docs/hoshii.png');
+  this.logo.setSrc(`images/hoshii.png`);
+  // this.logo.setSrc('https://raw.githubusercontent.com/yurafuca/5000choyen/master/docs/hoshii.png');
   this.generator = new Generator(this.ctx);
 }
 
