@@ -225,8 +225,8 @@ Drawer.prototype.save = function() {
 
 Drawer.prototype.newtab = function(q) {
   const width = Math.max(this.actualWidth.top, this.actualWidth.bottom);
-  const height = this.ctx.canvas.height;
+  const height = this.ctx.canvas.height - 10;
   q += '&width=' + width; 
-  q += '&height=' + height; 
+  q += '&height=' + height;
   window.open('result.html?' + q);
 }
