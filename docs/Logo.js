@@ -1,19 +1,18 @@
-var Hoshii = function() {
-  this.self = new Image();
-  // this.self.setAttribute('crossOrigin', 'anonymous');
+var Logo = function() {
+  this._logo = new Image();
 };
 
-Hoshii.prototype.setSrc = function(src) {
-  this.self.src = src;
+Logo.prototype.setSrc = function(src) {
+  this._logo.src = src;
 }
 
-Hoshii.prototype.isLoaded = function() {
-  if (!this.self.complete) return false;
-  if (typeof this.self.naturalWidth !== "undefined" && this.self.naturalWidth === 0) return false;
+Logo.prototype.isLoaded = function() {
+  if (!this._logo.complete) return false;
+  if (typeof this._logo.naturalWidth !== "undefined" && this._logo.naturalWidth === 0) return false;
   return true;
 }
 
-Hoshii.prototype.drawTo = function(ctx, x, y) {
+Logo.prototype.drawTo = function(ctx, x, y) {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
-  ctx.drawImage(this.self, x + 5, y + 2);
+  ctx.drawImage(this._logo, x + 5, y + 2);
 }

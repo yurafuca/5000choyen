@@ -1,12 +1,9 @@
-const SETTINGS = (function() {
-  return {
-    TEXT_ORDER: function() {
+window.Settings = {
+  get: function(name) {
+    if (name === 'TEXT_ORDER') {
       return document.querySelector('input[name="text-order"]:checked').value;
-    },
-    BACKGROUND_ORDER: function() {
+    } else if (name === 'BACKGROUND_ORDER') {
       return document.querySelector('input[name="background-order"]:checked').value;
     }
-  };
-})();
-
-window.SETTINGS = SETTINGS;
+  }
+};
