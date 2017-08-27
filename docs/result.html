@@ -1,12 +1,29 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <style type="text/css">
-body {
-  background-color: #0E0E0E;
-}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fontfaceobserver/2.0.13/fontfaceobserver.js"></script>
+<link href='notobk-subset.otf' rel='stylesheet' type='text/css'>
+<link href='notoserifbk-subset.otf' rel='stylesheet' type='text/css'>
+<style type="text/css">
+	@font-face {
+		font-family: 'notobk';
+		src: url('notobk-subset.otf') format('opentype');
+	}
+	@font-face {
+		font-family: 'notoserifbk';
+		src: url('notoserifbk-subset.otf') format('opentype');
+	}
+	html {
+		height: 100%;
+		width: 100%;
+	}
+	body {
+		margin: 0;
+		height: 100%;
+		width: 100%;
+		background-color: #0E0E0E;
+	}
 </style>
 <title></title>
 <meta charset="utf-8">
@@ -22,9 +39,21 @@ body {
 	<script src="result.js"></script>
 </head>
 <body>
-	<div>
-		<iframe style="border: 0; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%" id="result"></iframe>
+	<div style="width: 100%; height: 100%; position: relative">
+		<img style="display: table-cell; text-align: center; background-image: url(transparent.png); background-size: 700px;    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;" id="result"></iframe>
 	</div>
+	<img style="border: 0; position:absolute; top:0; left:0; right:0; bottom: 0; opacity: 0.0; width: 100%; height:100%" id="result2"></iframe>
+
+	<script src="Logo.js"></script>
+	<script src="generator.js"></script>
+	<script src="drawer.js"></script>
+	<script src="result.js"></script>
+
 <!-- Place your content here -->
 <!-- SCRIPTS -->
 <!-- Example: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
