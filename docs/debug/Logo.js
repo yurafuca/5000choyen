@@ -1,11 +1,7 @@
 var Hoshii = function() {
   this.self = new Image();
-  // this.self.setAttribute('crossOrigin', 'anonymous');
+  this.self.src = `images/hoshii.png`;
 };
-
-Hoshii.prototype.setSrc = function(src) {
-  this.self.src = src;
-}
 
 Hoshii.prototype.isLoaded = function() {
   if (!this.self.complete) return false;
