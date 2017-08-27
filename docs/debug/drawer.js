@@ -1,14 +1,9 @@
 /* globals SETTINGS, Hoshii, Generator */
 var Drawer = function(ctx) {
-  this.ctx = ctx;
-  this.actualWidth = {
-    top: 0,
-    bottom: 0
-  };
-  this.logo = new Hoshii();
-  this.logo.setSrc(`images/hoshii.png`);
-  // this.logo.setSrc('https://raw.githubusercontent.com/yurafuca/5000choyen/master/docs/hoshii.png');
-  this.generator = new Generator(this.ctx);
+  this.ctx         = ctx;
+  this.actualWidth = { top: 0, bottom: 0 };
+  this.logo        = new Hoshii();
+  this.generator   = new Generator(this.ctx);
 }
 
 Drawer.prototype.redrawTop = function(text, x, y, bgColor) {
@@ -25,7 +20,7 @@ Drawer.prototype.redrawTop = function(text, x, y, bgColor) {
       break;
   }
 
-  this.ctx.setTransform(1, 0, -0.4, 1, 0, 0);
+  this.ctx.setTransform(1, 0, -0.45, 1, 0, 0);
   
   //黒色 
   {
@@ -121,7 +116,7 @@ Drawer.prototype.redrawBottom = function(text, x, y, bgColor) {
     this.ctx.clearRect(0, 130, this.ctx.canvas.width, this.ctx.canvas.height / 2 + 10);
   }
 
-  this.ctx.setTransform(1, 0, -0.4, 1, 0, 0);
+  this.ctx.setTransform(1, 0, -0.45, 1, 0, 0);
 
   //黒色 
   {
@@ -192,6 +187,7 @@ Drawer.prototype.redrawBottom = function(text, x, y, bgColor) {
 
 Drawer.prototype.redrawImage = function(x, y, bgColor, callback) {
   this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+
   switch(bgColor) {
     case `white`:
       this.ctx.fillStyle = `white`;
@@ -202,19 +198,18 @@ Drawer.prototype.redrawImage = function(x, y, bgColor, callback) {
       break;
   }
 
-  if (this.logo.isLoaded()) 
+  if (this.logo.isLoaded()) {
     this.logo.drawTo(this.ctx, x, y);
-  else
+  } else {
     this.logo.self.onload = function() {
       this.logo.drawTo(this.ctx, x, y);
-      if (callback)
-      callback();
+      if (callback) callback();
     }.bind(this);
+  }
 
   this.actualWidth.bottom = 370 + x;
 
-  if (callback)
-    callback();
+  if (callback) callback();
 }
 
 Drawer.prototype.save = function() {

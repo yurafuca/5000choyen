@@ -2,7 +2,6 @@ var fontA = new FontFaceObserver('notobk');
 var fontB = new FontFaceObserver('notoserifbk');
 
 Promise.all([fontA.load(), fontB.load()]).then(function () {
-  console.log('Family A & B have loaded');
   const queries = window.location.href.split('?')[1];
   const params = {};
 
@@ -13,12 +12,9 @@ Promise.all([fontA.load(), fontB.load()]).then(function () {
   });
 
   const canvas = document.createElement("canvas");
-  // const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext('2d');
   ctx.canvas.height = Number(params.height);
   ctx.canvas.width = Number(params.width);
-  // ctx.fillStyle = 'white';
-  // ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
   const drawer = new Drawer(ctx);
@@ -33,10 +29,7 @@ Promise.all([fontA.load(), fontB.load()]).then(function () {
       result2.src = ctx.canvas.toDataURL("image/png");
     });
 
-  // drawer.save();
   const result = document.getElementById('result');
   result.src = ctx.canvas.toDataURL("image/png");
   result2.src = ctx.canvas.toDataURL("image/png");
-
-  // drawer.save();
 });
