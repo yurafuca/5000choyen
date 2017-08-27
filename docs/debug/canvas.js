@@ -59,6 +59,7 @@ Canvas.prototype.onTouchStart = function(e) {
 };
 
 Canvas.prototype.onTouchMove = function(e) {
+  e.preventDefault();
   e.clientX = e.touches[0].clientX;
   e.clientY = e.touches[0].clientY;
   this.onMove(e);
