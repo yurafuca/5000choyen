@@ -53,6 +53,7 @@ Canvas.prototype.onUp = function(e) {
 };
 
 Canvas.prototype.onTouchStart = function(e) {
+  e.preventDefault();
   e.clientX = e.touches[0].clientX;
   e.clientY = e.touches[0].clientY;
   this.onDown(e);
@@ -66,6 +67,7 @@ Canvas.prototype.onTouchMove = function(e) {
 };
 
 Canvas.prototype.onTouchEnd = function(e) {
+  e.preventDefault();
   e.clientX = e.touches[0].clientX;
   e.clientY = e.touches[0].clientY;
   this.onUp(e);
