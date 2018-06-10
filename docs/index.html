@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -10,31 +10,38 @@
 			font-family: 'notobk';
 			src: url('notobk-subset.otf') format('opentype');
 		}
+
 		@font-face {
 			font-family: 'notoserifbk';
 			src: url('notoserifbk-subset.otf') format('opentype');
 		}
+
 		div {
 			display: block;
 			margin: 10px 0;
 		}
+
 		input[type="radio"] {
-			display:none; 
+			display: none;
 		}
+
 		label {
-			display:inline-block;
+			display: inline-block;
 			color: black;
 			background-color: lightgray;
-			padding:3px 10px;
+			padding: 3px 10px;
 		}
+
 		.text-order {
 			/* display: none; */
 		}
-		.text-order input[type="radio"]:checked + label {
+
+		.text-order input[type="radio"]:checked+label {
 			color: white !important;
 			background-color: blue !important;
 		}
-		.background-order input[type="radio"]:checked + label {
+
+		.background-order input[type="radio"]:checked+label {
 			color: white;
 			background-color: black;
 		}
@@ -51,14 +58,33 @@
 <body>
 	<h1>5000兆円ジェネレーター super</h1>
 	<div>
-		<p>5000兆円風の画像を生成するツールです。<font color="blue"> `欲しい!`</font> も生成できます。</p>
-		<p style="border: solid 1px green; display: inline-block; padding: 5px">
-			<font color="green">
-				･ 17/08/27<br>
-				　- スマートフォンでも `欲しい!` をスクロールできるようになりました<br>
-				　- 新しいタブで画像を開く を追加しました<br>
-			</font>
+		<p>
+			<span>
+				<!-- eslint-disable -->
+				5000兆円風の画像を生成するツールです。<font color="blue">`欲しい!`</font> も生成できます。
+			</span>
 		</p>
+		<hr>
+		<div>
+			<h4>Contributor</h4>
+			<span>
+				作者:
+				<a href="https://twitter.com/yurafuca">@yurafuca</a>，
+			</span>
+			<span>
+				原作者:
+				<a href="https://twitter.com/rarity_rare25">@rarity_rare25</a>（<a href="https://rare25.github.io/5000choyen/">5000兆円ジェネレーター</a>）
+			</span>
+		</div>
+		<hr>
+
+		<div>
+			<h4>Changelog</h4>
+			<p><font color="blue">2018-06-10: 404 NotFound が表示される問題に対応しました</font></p>
+
+		</div>
+		<hr>
+
 	</div>
 	<div>
 		<canvas id="canvas" width="1500px" height="280px"></canvas>
@@ -66,13 +92,13 @@
 	<div>
 		<canvas id="canvas2" width="1500px" height="300px" style="display: none"></canvas>
 	</div>
-	  <div class="text-order">
+	<div class="text-order">
 		<font color="blue">`欲しい!`</font> の描画に
 		<input id="bar1" type="radio" name="text-order" value="image">
 		<label for="bar1">元ネタの画像を使う</label>
 		<input id="bar2" type="radio" name="text-order" value="text" checked>
 		<label for="bar2">文字を生成する</label>
-	</div>  
+	</div>
 	<div class="background-order">
 		画像を保存するとき背景色を
 		<input id="bar3" type="radio" name="background-order" value="transparent">
@@ -92,24 +118,22 @@
 		<button type="button" onclick="_canvas.newtab();">画像を新しいタブで開く</button>
 	</div>
 	<div>
-		<p>---</p>
+		<hr>
+
 		<p>
-			`欲しい!` はドラッグできます。<br>
+			`欲しい!` はドラッグできます。
+			<br>
 			<video autoplay loop muted style="max-width:600px">
 				<source src="demo.mp4" type="video/mp4">
 				<source src="demo.webm" type="video/webm">
 			</video>
 		</p>
-		<p>---</p>
+		<hr>
+
 	</div>
 	<div>
-		作者:<a href="https://twitter.com/yurafuca">@yurafuca</a> 
-		ソースコード:<a href="https://github.com/yurafuca/5000choyen">yurafuca/5000choyen</a>
-	</div>
-	<div>
-		原作者:<a href="https://twitter.com/rarity_rare25">@rarity_rare25</a> 
-		ソースコード:<a href="https://github.com/Rare25/5000choyen">5000choyen</a>
-		URL: <a href="https://rare25.github.io/5000choyen/">5000兆円ジェネレーター</a>
+		ソースコード:
+		<a href="https://github.com/yurafuca/5000choyen">yurafuca/5000choyen</a>
 	</div>
 
 
