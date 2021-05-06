@@ -1,20 +1,22 @@
 ﻿<!DOCTYPE html>
-<html lang="ja">
+<html lang="zh-CN">
 
 <head>
+	<link rel="preload stylesheet" as="style" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:900">
+	<link rel="preload stylesheet" as="style" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:900">
 	<meta charset="utf-8">
 	<title>5000兆円ジェネレーター super</title>
 	<meta name="description" content="今、話題の5000兆円。そんな5000兆円のような画像を生成できる5000兆円ジェネレーターです。好きな文字を入れて素敵な5000兆円ライフを楽しもう！" />
 	<style type="text/css">
-		@font-face {
+		/*@font-face {
 			font-family: 'notobk';
-			src: local('Noto Sans CJK SC Black'), url('NotoSansCJKsc-Black.otf') format('opentype');
+			src: url('https://fonts.googleapis.com/css?family=Noto+Sans+SC:900') format('opentype'), url('NotoSansCJKsc-Black.otf') format('opentype');
 		}
 
 		@font-face {
 			font-family: 'notoserifbk';
-			src: local('Noto Serif CJK SC Black'), url('NotoSerifCJKsc-Black.otf') format('opentype');
-		}
+			src: url('https://fonts.googleapis.com/css?family=Noto+Serif+SC:900') format('opentype'), url('NotoSerifCJKsc-Black.otf') format('opentype');
+		}*/
 
 		div {
 			display: block;
@@ -35,7 +37,8 @@
 		.text-order {
 			/* display: none; */
 		}
-
+		/*.do1{font-family: notobk;margin-left: 00000px;}
+		.do2{font-family: notoserifbk;margin-left: -100000px;}*/
 		.text-order input[type="radio"]:checked+label {
 			color: white !important;
 			background-color: blue !important;
@@ -48,7 +51,7 @@
 	</style>
 	<script src="settings.js"></script>
 	<script src="generator.js"></script>
-	<script src="drawer.js"></script>
+	<script src="drawer_cn.js"></script>
 	<script src="hoshii.js"></script>
 	<!--<script src="canvasImage.js"></script>-->
 	<script src="canvas.js"></script>
@@ -56,6 +59,7 @@
 </head>
 
 <body>
+
 	<h1>5000兆円生成器 super</h1>
 	<a href="index.html">切换到日语专用生成页面/日本語のページに移行する</a>
 	<div>
@@ -63,7 +67,7 @@
 			<span>
 				<!-- eslint-disable -->
 				生成5000兆円风格图片的工具。<font color="blue">`欲しい!`</font> 也可以生成。
-				<font color="red">请注意，由于中文所需的字体文件较大，所以请稍微等一下。也可直接安装<pre>Noto Sans CJK SC Black</pre>和<pre>Noto Serif CJK SC Black</pre>这两个字体来直接解决问题。具体链接详见Google。</font>
+				<font color="red">请注意，由于中文所需的字体文件是分片获取的，所以如果出现字体问题，请重新输入一遍。</font>
 			</span>
 		</p>
 		<hr>
@@ -86,7 +90,7 @@
 
 		<div>
 			<h4>Changelog</h4>
-			<p><font color="blue">2021-05-05: 添加简体中文翻译，修复字体问题</font></p>
+			<p><font color="blue">2021-05-06: 添加简体中文翻译，修复字体问题</font></p>
 			<p><font color="blue">2018-06-10: 修复了 404 NotFound 的异常问题</font></p>
 
 		</div>
@@ -115,10 +119,11 @@
 	</div>
 	<div>
 		<span id="labelTop">红色文字</span>
-		<input type="text" id="textboxTop" size="50" value="" spellcheck="false" oninput="_canvas.redrawTop();">
+		<script type="text/javascript">function e1(){_canvas.redrawTop();_canvas.redrawBottom();document.fonts.ready.then(function(){_canvas.redrawTop();_canvas.redrawBottom();});}</script>
+		<input type="text" id="textboxTop" size="50" value="" spellcheck="false" oninput="e1();">
 		<br>
 		<span id="labelBottom">银色文字</span>
-		<input type="text" id="textboxBottom" size="50" value="" spellcheck="false" oninput="_canvas.redrawBottom();">
+		<input type="text" id="textboxBottom" size="50" value="" spellcheck="false" oninput="e1();">
 	</div>
 	<div>
 		<button type="button" onclick="_canvas.save();">保存图片</button>
@@ -142,7 +147,6 @@
 		源代码:
 		<a href="https://github.com/yurafuca/5000choyen">yurafuca/5000choyen</a>
 	</div>
-
 
 </body>
 

@@ -8,7 +8,7 @@ var Drawer = function(ctx) {
 
 Drawer.prototype.redrawTop = function(text, x, y, bgColor) {
   this.ctx.setTransform(1, 0, 0, 1, 0, 0);
-  this.ctx.font = '100px notobk';
+  this.ctx.font = '100px "Noto Sans SC"';
   
   switch(bgColor) {
     case `white`:
@@ -107,7 +107,7 @@ Drawer.prototype.redrawTop = function(text, x, y, bgColor) {
 
 Drawer.prototype.redrawBottom = function(text, x, y, bgColor) {
   this.ctx.setTransform(1, 0, 0, 1, 0, 0);
-  this.ctx.font = '100px notoserifbk';
+  this.ctx.font = '100px "Noto Serif SC"';
 
   if (bgColor === `white`) {
     this.ctx.fillStyle = bgColor;
@@ -223,5 +223,5 @@ Drawer.prototype.newtab = function(q) {
   const height = this.ctx.canvas.height - 10;
   q += '&width=' + width; 
   q += '&height=' + height;
-  window.open('result.html?' + q);
+  window.open('result_cn.html?' + q);
 }

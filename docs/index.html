@@ -86,7 +86,7 @@
 
 		<div>
 			<h4>Changelog</h4>
-			<p><font color="blue">2021-05-05:中国語翻訳・字体や字形の修復をしました</font></p>
+			<p><font color="blue">2021-05-06:中国語翻訳・字体や字形の問題修復をしました</font></p>
 			<p><font color="blue">2018-06-10: 404 NotFound が表示される問題に対応しました</font></p>
 
 		</div>
@@ -114,11 +114,12 @@
 		<label for="bar4">白にする</label>
 	</div>
 	<div>
+		<script type="text/javascript">function e1(){_canvas.redrawTop();_canvas.redrawBottom();document.fonts.ready.then(function(){_canvas.redrawTop();_canvas.redrawBottom();});}</script>
 		<span id="labelTop">赤色の文字</span>
-		<input type="text" id="textboxTop" size="50" value="" spellcheck="false" oninput="_canvas.redrawTop();">
+		<input type="text" id="textboxTop" size="50" value="" spellcheck="false" oninput="e1();">
 		<br>
 		<span id="labelBottom">銀色の文字</span>
-		<input type="text" id="textboxBottom" size="50" value="" spellcheck="false" oninput="_canvas.redrawBottom();">
+		<input type="text" id="textboxBottom" size="50" value="" spellcheck="false" oninput="e1();">
 	</div>
 	<div>
 		<button type="button" onclick="_canvas.save();">画像を保存する</button>
