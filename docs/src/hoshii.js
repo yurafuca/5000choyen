@@ -1,6 +1,6 @@
 var Hoshii = function() {
   this.self = new Image();
-  this.self.src = `images/hoshii.png`;
+  this.self.src = `res/hoshii.png`;
 };
 
 Hoshii.prototype.isLoaded = function() {
