@@ -22,7 +22,7 @@ function onChangeState() {
     drawer.useTransparent = backgroundOrder.value === `transparent`;
     drawer.bottomText.useImg = textOrder.value === `image`;
     drawer.topText.value = textboxTop.value;
-    drawer.bottomText.value = textboxBottom.value;
+    drawer.bottomText.value = textboxBottom.value.replaceAll("！", "!");
     drawer.useTransparent = document.querySelector('input[name="background-color"]:checked').value === `transparent`;
 
     drawer.refresh();
