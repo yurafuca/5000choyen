@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <link rel="preload stylesheet" as="style" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:900" />
+    <link rel="preload stylesheet" as="style" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:900" />
+    <meta charset="utf-8" />
+    <title>5000兆円ジェネレーター super</title>
+    <meta name="description" content="今、話題の5000兆円。そんな5000兆円のような画像を生成できる5000兆円ジェネレーターです。好きな文字を入れて素敵な5000兆円ライフを楽しもう！" />
+    <style type="text/css">
+        div {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        label {
+            display: inline-block;
+            color: black;
+            background-color: lightgray;
+            padding: 3px 10px;
+        }
+
+        .text-type {
+            /* display: none; */
+        }
+
+        .text-type input[type="radio"]:checked + label {
+            color: white !important;
+            background-color: blue !important;
+        }
+
+        .background-color input[type="radio"]:checked + label {
+            color: white;
+            background-color: black;
+        }
+
+        .flex{
+            width: 200px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        );
+        }
+        .flex > *{
+            width: 50%;
+            padding: 2.5%;
+            margin-top: 0;
+            background: #fff;
+            text-align: center;
+        }
+        .flex > *{
+            border: 1px solid;
+        }
+    </style>
+    <script src="src/top_text.js"></script>
+    <script src="src/bottom_text.js"></script>
+    <script src="src/drawer.js"></script>
+    <script src="src/index.js"></script>
+    <script type="text/javascript">
+        window.addEventListener('load', function() {
+            drawer.lang = "cn";
+        })
+    </script>
+</head>
+
+<body>
+<h1>5000兆円生成器 super</h1>
+<div class="flex">
+    <p>
+        <a href="index.html">
+            <b>日本語</b><br />
+            <img src="https://images.emojiterra.com/google/android-11/128px/1f1ef-1f1f5.png" width="32" height="32" />
+        </a>
+    </p>
+    <p>
+        <b>简体中文</b><br />
+        <img src="https://images.emojiterra.com/google/android-11/128px/1f1e8-1f1f3.png" width="32" height="32" />
+    </p>
+</div>
+<div>
+    <p>
+                <span>
+                    <!-- eslint-disable -->
+                    生成5000兆円风格图片的工具。<font color="blue">`欲しい!`</font> 也可以生成。
+                    <font color="red">请注意，由于中文所需的字体文件是分片获取的，所以如果出现字体问题，请重新输入一遍。</font>
+                </span>
+    </p>
+    <hr />
+    <div>
+        <h4>Contributor</h4>
+        <span>
+                    作者:
+                    <a href="https://twitter.com/yurafuca">@yurafuca</a>，
+                </span>
+        <span>
+                    原作者:
+                    <a href="https://twitter.com/rarity_rare25">@rarity_rare25</a>（<a href="https://rare25.github.io/5000choyen/">5000兆円ジェネレーター</a>）
+                </span>
+        <span>
+                    简体中文翻译，字体问题修复：
+                    <a href="https://twitter.com/soloopooo">@soloopooo</a>
+                </span>
+    </div>
+    <hr />
+</div>
+<div>
+    <canvas id="canvas" width="1500px" height="290px"></canvas>
+</div>
+<div>
+    <canvas id="canvas2" width="1500px" height="290px" style="display: none;"></canvas>
+</div>
+<div class="text-type">
+    <font color="blue">`欲しい!`</font> の描画に
+    <input id="bar1" type="radio" name="text-type" value="image" />
+    <label for="bar1">直接用原来的meme</label>
+    <input id="bar2" type="radio" name="text-type" value="text" checked />
+    <label for="bar2">生成文字</label>
+</div>
+<div class="background-color">
+    保存图片的时候，背景为
+    <input id="bar3" type="radio" name="background-color" value="transparent" />
+    <label for="bar3">透明</label>
+    <input id="bar4" type="radio" name="background-color" value="white" checked />
+    <label for="bar4">白色</label>
+</div>
+<div>
+    <span id="labelTop">红色文字</span>
+    <input type="text" id="textboxTop" size="50" value="" spellcheck="false" oninput="onChangeState();" />
+    <br />
+    <span id="labelBottom">银色文字</span>
+    <input type="text" id="textboxBottom" size="50" value="" spellcheck="false" oninput="onChangeState();" />
+</div>
+<div>
+    <button type="button" onclick="drawer.saveImage();">保存图片</button>
+    <button type="button" onclick="drawer.openImage();">在新标签页中打开图片</button>
+</div>
+<div>
+    <hr />
+
+    <p>
+        `欲しい!` 这一段也可以拖动。
+        <br />
+        <video autoplay loop muted style="max-width: 600px;">
+            <source src="res/demo.mp4" type="video/mp4" />
+            <source src="res/demo.webm" type="video/webm" />
+        </video>
+    </p>
+    <hr />
+</div>
+<div>
+    源代码:
+    <a href="https://github.com/yurafuca/5000choyen">yurafuca/5000choyen</a>
+</div>
+</body>
+</html>
