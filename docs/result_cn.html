@@ -1,63 +1,49 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="preload stylesheet" as="style" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:900">
-<link rel="preload stylesheet" as="style" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:900">
-<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/fontfaceobserver/2.1.0/fontfaceobserver.js"></script>
-<!--<link href='NotoSansCJKsc-Black.otf' rel='stylesheet' type='text/css'>
-<link href='NotoSerifCJKsc-Black.otf' rel='stylesheet' type='text/css'>-->
-<style type="text/css">
-	/*@font-face {
-		font-family: 'notobk';
-		src: local('Noto Sans CJK SC Black'), url('NotoSansCJKsc-Black.otf') format('opentype');
-	}
-	@font-face {
-		font-family: 'notoserifbk';
-		src: local('Noto Serif CJK SC Black'), url('NotoSerifCJKsc-Black.otf') format('opentype');
-	}*/
-	html {
-		height: 100%;
-		width: 100%;
-	}
-	body {
-		margin: 0;
-		height: 100%;
-		width: 100%;
-		background-color: #0E0E0E;
-	}
-</style>
-<title></title>
-<meta charset="utf-8">
-<meta name="description" content="">
-<meta name="author" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="">
-<!--[if lt IE 9]>
-<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-<link rel="shortcut icon" href="">
-	<script src="src/cn/result.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="preload stylesheet" as="style" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:900" />
+    <link rel="preload stylesheet" as="style" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:900" />
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/fontfaceobserver/2.1.0/fontfaceobserver.js"></script>
+    <style type="text/css">
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #0e0e0e;
+        }
+    </style>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <!--[if lt IE 9]>
+    <script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="" />
 </head>
 <body>
-	<div style="width: 100%; height: 100%; position: relative">
-		<img style="display: table-cell; text-align: center; background-image: url(res/transparent.png); background-size: 700px;    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-    margin: auto;" id="result"></iframe>
-	</div>
-	<img style="border: 0; position:absolute; top:0; left:0; right:0; bottom: 0; opacity: 0.0; width: 100%; height:100%" id="result2"></iframe>
+<div style="width: 100%; height: 100%; position: relative;">
+    <img style="display: table-cell; text-align: center; background-image: url(res/transparent.png); background-size: 700px; top: 0; bottom: 0; left: 0; right: 0; position: absolute; margin: auto;" id="result" />
+</div>
+<img style="border: 0; position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0; width: 100%; height: 100%;" id="result2" />
 
-	<script src="src/hoshii.js"></script>
-	<script src="src/generator.js"></script>
-	<script src="src/cn/drawer.js"></script>
-	<script src="src/cn/result.js"></script>
-
-<!-- Place your content here -->
-<!-- SCRIPTS -->
-<!-- Example: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<script src="src/top_text.js"></script>
+<script src="src/bottom_text.js"></script>
+<script src="src/drawer.js"></script>
+<script src="src/result_cn.js"></script>
+<script type="text/javascript">
+    window.addEventListener("load", function () {
+        drawer.lang = "cn";
+    });
+</script>
 </body>
 </html>
